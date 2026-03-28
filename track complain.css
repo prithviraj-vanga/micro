@@ -1,0 +1,71 @@
+*{
+    padding: 9px;
+}
+body
+{
+    background:radial-gradient(circle at center, #191924 0%, #221f1f 100%);
+    color:white;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-size: cover;
+}
+input,::placeholder
+{
+    border:none;
+    background: transparent;
+    font-size: 17px;
+    color:white;
+   
+}
+input
+{
+     border-bottom: 2px solid rgb(173, 158, 158);
+}
+
+button
+{
+   background: conic-gradient(from 180deg,#00f0ff, #0077ff,#00f0ff);
+   font-size: 20px;
+  height: 100%; 
+   border-radius: 30px;
+   color:rgb(16, 11, 11);
+   font-weight: bold;
+   width:30%;
+
+}
+button:focus
+{
+  background: conic-gradient(from 90deg,#5c8b8e, #3c71ad,#436163);
+  color: white;  
+}
+
+.main
+{
+      width:30%;
+      
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    border-radius: 30px;
+    border:3.9px solid transparent;
+    background: linear-gradient( #1c1c25 0%, #0c0c0c 100%) padding-box,
+    conic-gradient( from 90deg,red,yellow,rgb(17, 190, 17),rgb(4, 4, 241),rgb(252, 151, 1),red) border-box;
+
+    background-size: 200% 200%;
+    animation:shine 4s linear infinite;
+
+}
+@keyframes shine
+{
+    0%{background-position: 0% 50%;}
+    100%{ background-position: 200% 50%;}
+}
+.result{
+    font-size: 17px;
+    line-height: 1.9;
+
+}

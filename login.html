@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="track complain.css">
+</head>
+<style>
+    img
+    {
+        border-radius: 50px;
+    }
+</style>
+<body>
+
+<div class="main">
+<h2>Admin Login</h2>
+<img src="ad.jpeg" height="80px" width="80px">
+<br><br>
+<input type="text" id="uname" placeholder="Enter Username"  required><br><br>
+<input type="text" id="passwd" placeholder="Enter Password"  required><br><br>
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+</div>
+
+<script>
+function login() {
+    let user = document.getElementById("uname").value;
+    let pass = document.getElementById("passwd").value;
+
+    // Set your admin details
+    let adminUser = "Prithviraj Vanga";
+    let adminPass = "Gp psv";
+
+    // triple equal to for checking cinditions
+    if ((user === adminUser) && (pass === adminPass)) {
+        localStorage.setItem("adminLoggedIn", "true");
+        window.location.href = "dash.html";
+    } else {
+        //document.getElementById("msg").innerText = "Invalid Login!";
+        alert("\n INVALLID LOGIN !!!\n")
+    }
+}
+</script>
+
+</body>
+</html>

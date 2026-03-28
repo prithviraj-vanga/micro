@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<style>
+ body
+ {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background:radial-gradient(circle,rgb(72, 72, 82),rgb(89, 89, 104),rgb(122, 122, 150),rgb(48, 48, 58));
+        /*background-image:url('i2.avif');
+        background-size: cover;
+        background-repeat:no-repeat;*/
+       
+        background-size: cover;
+
+}
+
+.main
+{
+    text-align: center;
+}
+
+button
+{
+   background: conic-gradient(from 180deg,#00f0ff, #0077ff,#00f0ff);
+   font-size: 19px;
+  height: 100%; 
+   border-radius: 30px;
+   color:rgb(16, 11, 11);
+  /*font-weight: bold;*/
+   width:max-content;
+
+}
+
+/*.log button
+{
+   background: conic-gradient(from 180deg,#00f0ff, #0077ff,#00f0ff);
+   font-size: 30px;
+  height:70%; 
+   border-radius: 30px;
+   color:rgb(16, 11, 11);
+   font-weight: bold;
+   width:50%;
+
+}
+*/
+table
+{
+    border-collapse: collapse;
+}
+tr,td,th
+{
+    border:1.3px solid rgb(158, 152, 152);
+}
+button:focus
+{
+  background: conic-gradient(from 90deg,#5c8b8e, #3c71ad,#436163);
+  color: white;  
+}
+
+.log button:focus
+{
+  background: conic-gradient(from 90deg,#5c8b8e, #3c71ad,#436163);
+  color: white;  
+}
+
+.cards
+{
+    border:2px dashed red;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color:aliceblue;
+}
+
+</style>
+<body>
+<div class="main">
+<h2>Admin Dashboard</h2>
+
+<div class="cards">
+    <div class="total">
+        <h2> Total</h2>
+        <p id="total">0</p>
+    </div>
+    <div class="resolve">
+        <h2> Resolved </h2>
+        <p id="resolved">0</p>
+    </div>
+    <div class="pend">
+        <h2> Pending</h2>
+        <p id="pending">0</p>
+    </div>
+</div>
+<br>
+<br>
+
+
+<table border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Complaint</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+<br><br>
+
+<button class="log"  onclick="logout()">Logout</button>
+</div>
+<script>
+
+//  Check login
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "admin.html";
+}
+
+// Load complaints
+function loadComplaints() {
+    let table = document.getElementById("tableBody");
+    table.innerHTML = "";
+
+    
+    let total=0;
+    let resolved=0;
+    let pending=0;
+
+    for (let i = 0; i < localStorage.length; i++) {
+
+        let key = localStorage.key(i);
+
+        // skip admin login key
+        if (key === "adminLoggedIn") continue;
+
+        let data = JSON.parse(localStorage.getItem(key));
+        total++;
+        if(data.status==="Resolved")
+    {
+        resolved++;
+    }
+    else{
+        pending++;
+    }
+        let row = `<tr>
+            <td>${key}</td>
+            <td>${data.name}</td>
+            <td>${data.email}</td>
+            <td>${data.department}</td>
+            <td>${data.complaint}</td>
+            <td>${data.status}</td>
+            <td>
+                <button class="btn"    onclick="updateStatus('${key}')">Update</button>
+                <button class="btn"  onclick="deleteComplaint('${key}')">Delete</button>
+            </td>
+        </tr>`;
+
+        table.innerHTML += row;
+    }
+}
+
+//  Update status
+function updateStatus(id) {
+    let data = JSON.parse(localStorage.getItem(id));
+    data.status = "Resolved";
+
+    localStorage.setItem(id, JSON.stringify(data));
+    loadComplaints();
+}
+
+//  Delete complaint
+function deleteComplaint(id) {
+    localStorage.removeItem(id);
+    loadComplaints();
+}
+
+//  Logout
+function logout() {
+    localStorage.removeItem("adminLoggedIn");
+    window.location.href = "login.html";
+}
+
+// update cards
+document.getElementById("total").innerText=total;
+document.getElementById("resolved").innerText=resolved;
+document.getElementById("pending").innerText=pending;
+
+// load data on start
+loadComplaints();
+
+</script>
+
+</body>
+</html>

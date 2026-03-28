@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Track Complaint</title>
+  <link rel="stylesheet" type="text/css" href="track complain.css">
+</head>
+<body>
+<div class="main">
+<h2>Track Complaint</h2>
+
+<input type="text" id="trackId" placeholder="Enter Complaint ID"><br><br>
+<button onclick="trackComplaint()">Track</button><br><br>
+<div class="result">
+<p id="result"></p>
+</div>
+</div>
+
+<script>
+function trackComplaint() 
+{
+  let id = document.getElementById("trackId").value;
+
+  let data = localStorage.getItem(id);
+
+  
+ 
+  if (data) {
+    let obj = JSON.parse(data);
+
+    document.getElementById("result").innerText =
+      "Name: " + obj.name +
+      "\n E-mail: " + obj.email +
+      "\n Department: "+ obj.department+
+      "\nComplaint: " + obj.complaint +
+      "\nStatus: " + obj.status;
+  } else {
+    document.getElementById("result").innerText =
+      "Complaint not found!";
+  }
+}
+
+</script>
+
+</body>
+</html>

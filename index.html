@@ -1,0 +1,219 @@
+<html>
+
+<head>
+    <title>
+        Let's speak Up
+    </title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+
+<body>
+    <div onmouseenter="playSound()" class="head">
+        <div>
+            <h1 style="margin-left:3%;">
+                Let's Speak Up
+            </h1>
+        </div>
+        <div class="menu">
+            <div>
+                <a href="#main">
+                    Home
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="#about">
+                    About us
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="complain.html">
+                    Register complaint
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="track complain.html">
+                    Track complain
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="login.html">
+                    Admin Panel
+                </a>
+            </div>
+            <br>
+
+        </div>
+
+    </div>
+    <br> <br> <br> <br>
+    <div id="main">
+        <iframe src="img.jpeg" height="700px" width="1050px"></iframe>
+        <div class="qoutes">
+            <div class="q">
+                <h3>
+                    "The world is changed by your example, not by your opinion."<br><br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; — Paulo Coelho
+
+                </h3>
+            </div>
+            <br>
+            <br>
+            <div class="q">
+                <h3>
+                    " If you see fraud and do not say fraud, you are a fraud."<br><br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;– Nassim Nicholas Taleb
+
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="topic">
+
+        <div class="sub">
+            <div class="comp">
+                <br>
+                <br>
+                <br>
+                <h1>Register Your Complaint Here</h1> <br><br>
+                <p>Here you can register <br>
+                    your complaint and we assure<br>
+                    to solve them.</p><br><br>
+
+                <a href="complain.html"><button>Register Complaint</button></a>
+            </div>
+            <div class="track">
+                <br>
+                <br>
+                <br>
+                <h1>
+                    Track your complaint
+                </h1><br><br>
+                <p>Here you can track<br>
+                    your registered complaint with<br>
+                    your <b>complaint id</b><br><br></p>
+
+                <img src="" height="" width="">
+
+                <a href="track complain.html"> <button> Track Complaint</button></a>
+            </div>
+        </div>
+        <br>
+        <div class="h3">
+            <marquee dir="auto" , scrollamount="20">
+                <h3> Read the procedure given below for any queries </h3>
+            </marquee>
+        </div>
+
+
+    </div>
+    <!--Guidelines section for users -->
+    <div class="guide">
+
+        <h2 style="text-align: center;"><u>How to Use the Let's Speak Up</u></h2>
+        <div class="notes">
+            <div class="cd">
+                <h3>For Users (Submitting a Complaint)</h3>
+                <ol type="1">
+                    <li>Open the Website</li><br>
+                    <li>Visit the homepage of the Complaint Management System.</li><br>
+                    <li>Go to Complaint Form</li><br>
+                    <li>Click on the “Register Complaint” option</li><br>
+                    <li>Fill in Details</li><br>
+                    <li>Enter required information</li><br>
+                    <li>Click on the “Submit” button to register your complaint</li><br>
+                    <li>Get Complaint ID</li><br>
+                </ol>
+                After submission, a unique Complaint ID will be generated. Save it for future tracking.
+                </ul>
+
+            </div>
+            <div class="r1">
+                <div class="tc">
+                    <p> Track Complaint Status</p>
+                    <p> Go to the “Track Complaint” section <br>
+                        and enter your Complaint ID to check status <br>
+                        (Pending / Resolved).
+                    </p>
+
+                </div>
+                <br>
+                <br>
+                <!--<div class="ac">
+             For Admin (Managing Complaints)
+Login to Dashboard
+Enter the admin username and password to access the dashboard.
+View All Complaints
+See a list of all submitted complaints in one place.
+Check Complaint Details
+Click on any complaint to view full information.
+Update Status
+Mark complaints as:
+Pending
+In Progress
+Resolved
+Monitor Summary Cards
+View total, resolved, and pending complaints using dashboard cards.
+           </div>-->
+                <div class="qt">
+                    <p>Quick Tip</p>
+                    <ul>
+                        <li>Always keep your Complaint ID safe to track <br>your issue easily.</li><br>
+                        <li>
+                            Ensure correct details are entered to avoid delays in resolution.<br>
+                        </li><br>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <br><br>
+    <div class="vedio">
+        <h2 style="text-align: center; font-size: 29px;"> Video Guide </h2>
+        <iframe src="vedio.mp4" height="600px" width="70%" margin="auto" allowfullscreen></iframe>
+    </div>
+
+    <div id="about">
+        <div class="abt">
+
+            <h3>About Us: </h3>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our 'Let's Speak Up' is designed to simplify
+            the process of raising and resolving issues. It enables
+            users to submit complaints, track their progress, and
+            ensures that authorities can respond efficiently.We
+            aim to create a transparent and user-friendly environment
+            where every concern is valued and addressed.<br>
+        </div>
+
+        <div class="cont">
+            <br>
+
+            <h3>Our Contact</h3>
+            <h4> Our founder: <b>Mast. Prithviraj Shrinivas Vanga</b></h4>
+            <p>🕿 Contact number: 9075021359</p>
+            <p>📧 E-mail:vangaprithvi@gmail.com</p>
+            <p>🏢Address:CM Dept.,GPS, Solapur 413006</p>
+
+        </div>
+    </div>
+    <div class="copy">
+        &copy All Rights reserved by Master Prithviraj Vanga
+    </div>
+
+    <audio id="sound" src="audio.mpeg"></audio>
+    <script>
+        function playSound() {
+            document.getElementById("sound").play();
+        }
+    </script>
+</body>
+
+</html>

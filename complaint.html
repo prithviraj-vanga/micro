@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register Complain</title>
+    <link rel="stylesheet" type="text/css" href="complain.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <!-- Body ofg registeration form -->
+        <h2>Register Your Complain</h2>
+
+        <form id="complain" enctype="multipart/form-data" action="https://formcarry.com/s/dNpgrrfvUCE" method="post">
+            <input type="text" name="name" placeholder="Name-Fname-Sname" required><br><br>
+            <input type="email" name="email" placeholder="xyz@email.com" required><br><br>
+            <input type="tel" name="phone" placeholder="Enter contact number" required pattern="[0-9]{10}"><br><br>
+
+            <textarea name="complaint" placeholder="Register Complain here...." required></textarea><br><br>
+
+            <select name="department" required>
+                <option value="" selected disabled>Select your department</option>
+                <option value="CM">CM</option>
+                <option value="IT">IT</option>
+                <option value="E&TC">E&TC</option>
+                <option value="EE">EE</option>
+                <option value="ME">ME</option>
+                <option value="CE">CE</option>
+            </select><br><br>
+
+            <h4>Enter evidence:</h4>
+            <input type="file" name="file" accept="*/*"><br><br>
+            <input type="hidden" name="complaint_id" id="complaint_id">
+
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        /* Scripting for storing data in local storage, sending it to formit and preventing auto reload
+        */
+        const form = document.getElementById("complain");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Generate Complaint ID
+            let id = "CMP" + Math.floor(Math.random() * 100000);
+            document.getElementById("complaint_id").value = id;
+
+            // Get values i.e initialization
+            let name = form.name.value;
+            let email = form.email.value;
+            let department = form.department.value;
+            let complaint = form.complaint.value;
+
+            // Store in localStorage in structure
+            let data = {
+                name: name,
+                email: email,
+                department: department,
+                complaint: complaint,
+                status: "Pending"
+            };
+
+            // stringify the data
+            localStorage.setItem(id, JSON.stringify(data));
+
+            // Prepare FormData (important for Formspree)
+            const formData = new FormData(form);
+
+            // Send to Forminit
+            fetch("https://formcarry.com/s/dNpgrrfvUCE", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                // check whether data send correctly or not
+                .then(response => {
+                    //indicate data sent correctly
+                    if (response.ok) {
+                        document.getElementById("msg").innerHTML =
+                            "✅ Complaint Registered!<br>Your Complaint ID: <b>" + id + "</b>";
+                        form.reset();
+                    }
+                    // indicate there is a error
+                    else {
+                        document.getElementById("msg").innerHTML =
+                            "❌ Error sending complaint. Try again.";
+                    }
+                })
+                //if data not sent properly
+                .catch(error => {
+                    document.getElementById("msg").innerHTML =
+                        "⚠️ Network error!";
+                });
+        });
+
+    </script>
+
+</body>
+
+</html>
